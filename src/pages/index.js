@@ -1,5 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import markdownText from '../strings/markdown-strings.js'
+import MarkdownOptions from '@/components/options.js'
+import MarkdownExample from '@/components/markdown.js'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
@@ -12,16 +15,19 @@ export default function Home() {
   // const [htmlString, setHtmlString] = useState({});
 
   function grabData() {
-        var elements = document.getElementById("myForm").elements;
-        var obj ={};
-          for(var i = 0 ; i < elements.length ; i++){
-              var item = elements.item(i);
-              obj[item.name] = item.value;
-          }
-        const propertyValues = Object.values(obj);
+        // var elements = document.getElementById("myForm").elements;
+        // var obj ={};
+        //   for(var i = 0 ; i < elements.length ; i++){
+        //       var item = elements.item(i);
+        //       obj[item.name] = item.value;
+        //   }
+        // const propertyValues = Object.values(obj);
+        let markdownObj = new FormData(myForm);
 
+        console.log('markdown obj 1', markdownObj)
 
-        setMarkdownObj(propertyValues);
+        setMarkdownObj(markdownObj);
+        console.log('markdown obj 1', markdownObj)
         document.getElementById("myForm").reset();
         // generateString();
         console.log('markdown obj', markdownObj)
@@ -33,7 +39,6 @@ export default function Home() {
     //   console.log('generated string', generateString)
     // }
 
-
   return (
     <>
       <Head>
@@ -43,6 +48,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+
+        <h1> Markdown Generator </h1>
+
+        <div>A simple Markdown generator using mock blog data - either copy
+          and paste the existing markdown or generate your own using the options below. </div> 
+       
+        <MarkdownOptions /> 
+
+        <MarkdownExample />
           <form id="myForm" action="/my-handling-form-page" method="post">
 
                 <label htmlFor="name">Name:</label>
@@ -56,9 +70,9 @@ export default function Home() {
 
           </form>
 
-        <button onClick={() => grabData()}> Hello World </button>
+        <button onClick={grabData}> Hello World </button>
         <div> {markdownObj} </div> 
-      
+
       </main>
     </>
   )
