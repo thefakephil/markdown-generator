@@ -33,7 +33,8 @@ a {
 }
 
 pre { 
-  white-space: pre-wrap; 
+  /* white-space: pre-wrap;  */
+  white-space: pre-line;
   overflow-x: auto; 
   font-size: 14px;
 }

@@ -1,43 +1,19 @@
+
+
+
 import Head from 'next/head'
 import Image from 'next/image'
 import markdownText from '../strings/markdown-strings.js'
 import MarkdownOptions from '@/components/options.js'
-import MarkdownExample from '@/components/markdown.js'
+import Markdown from '@/components/markdown.js'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { useState } from 'react'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
+
 export default function Home() {
-
-  const [markdownObj, setMarkdownObj] = useState([]);
-  // const [htmlString, setHtmlString] = useState({});
-
-  function grabData() {
-        // var elements = document.getElementById("myForm").elements;
-        // var obj ={};
-        //   for(var i = 0 ; i < elements.length ; i++){
-        //       var item = elements.item(i);
-        //       obj[item.name] = item.value;
-        //   }
-        // const propertyValues = Object.values(obj);
-        let markdownObj = new FormData(myForm);
-
-        console.log('markdown obj 1', markdownObj)
-
-        setMarkdownObj(markdownObj);
-        console.log('markdown obj 1', markdownObj)
-        document.getElementById("myForm").reset();
-        // generateString();
-        console.log('markdown obj', markdownObj)
-    }
-
-    // function generateString() {
-    //   const propertyValues = Object.values(markdownObj);
-    //   setHtmlString(propertyValues)
-    //   console.log('generated string', generateString)
-    // }
 
   return (
     <>
@@ -52,27 +28,9 @@ export default function Home() {
         <h1> Markdown Generator </h1>
 
         <div>A simple Markdown generator using mock blog data - either copy
-          and paste the existing markdown or generate your own using the options below. </div> 
-       
-        <MarkdownOptions /> 
-
-        <MarkdownExample />
-          <form id="myForm" action="/my-handling-form-page" method="post">
-
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="user_name" />
-
-                <label htmlFor="mail">Email:</label>
-                <input type="email" id="mail" name="user_email" />
-
-                <label htmlFor="msg">Message:</label>
-                <textarea id="msg" name="user_message"></textarea>
-
-          </form>
-
-        <button onClick={grabData}> Hello World </button>
-        <div> {markdownObj} </div> 
-
+          and paste the existing markdown or generate your own using the options below. Use this as a 
+          starting point to quickly get the mock markdown data you need (https://www.markdownguide.org/basic-syntax/).  </div> 
+        <Markdown /> 
       </main>
     </>
   )
