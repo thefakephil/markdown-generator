@@ -1,18 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import {header, markdownText, paragraph, image} from '../../../public/strings/strings'
 
-// const headerText = header ? `${header}` : null; 
-// function newString(){
-//   const assembledString = `
-//   ${header}
-//   ${header}
-// `
-//   return assembledString
-
-// }
-
-
-
 export default function handler(req, res) {
 
   const query = req.query;
@@ -55,25 +43,20 @@ export default function handler(req, res) {
   
   `
   }
-  
+
   
   function createQuery(input) {
   
     let newArray = []
-    let stringOutput = []
-    // Object.values(input).forEach(val => newArray.push(val));
+    // let stringOutput = []
   
-    // const looped = newArray.forEach((x, i) => console.log('x', x));
     for (const key in input) {
       if (input.hasOwnProperty(key) && input[key] != 'false') {
-        // console.log('key', key)
         newArray.push(key)
-        // stringOutput += `${Object.value[inputMap.input[value]]}`
       }
     }
   
-    const looped = newArray.forEach((x, i) => stringOutput.push(inputMap[newArray[i]]));
-    // console.log('newArray', newArray)
+    // const looped = newArray.forEach((x, i) => stringOutput.push(inputMap[newArray[i]]));
     return newArray
   }
 
@@ -82,10 +65,6 @@ export default function handler(req, res) {
   for (const item of strGenerator) {
     str += inputMap[item]();
   }
-
-//  const str = `${inputMap.addHeader()}`
-//  console.log('str', str)
-
 
   res.status(200).json((str))
 }

@@ -10,7 +10,7 @@ export default function Markdown() {
 
     const [markdown, setMarkdownObj] = useState(markdownText);
     const [headerValue, setHeaderValue] = useState(false)
-    const [sizeValue, setSizeValue] = useState('')
+    const [sizeValue, setSizeValue] = useState('medium')
     const { data } = useSWR(`/api/hello?addHeader=${headerValue}&sizeRequested=${sizeValue}`, fetcher)
     console.log('sizeValue', sizeValue)
   
